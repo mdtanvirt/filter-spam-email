@@ -106,3 +106,44 @@ print('Shape of entore data frame is: ', data.shape)
 data.head()
 
 data.tail()
+
+# Data cleaning: Checking for missing values
+# Checking if any message bodies are null
+# data.MESSAGE # Show the messages infos of email body
+data['MESSAGE'] # Another way to show the same result
+
+# To check any of the message values is null
+#data['MESSAGE'].isnull()
+data.MESSAGE.isnull()
+data.MESSAGE.isnull().values  # Show only values
+data.MESSAGE.isnull().values.any() # To show any value is null in entire messages
+
+# Missing value is not the same thing of Empty Message the empty message string is line " "
+type("") # This actually show the emplty string
+len("") # This will shows the length of empty string
+
+myEmptyVar = None # Define the empty veriable
+type(myEmptyVar) # Check the variable type
+
+# Check if there are empty emails (string length is ziro)
+data.MESSAGE.str.len()
+
+# To check any of the value is 0
+data.MESSAGE.str.len() == 0
+
+# To check any rows is True
+(data.MESSAGE.str.len() == 0).any()
+
+# Count the number of email body contain 0
+(data.MESSAGE.str.len() == 0).sum()
+
+# Challenge: how would you check the number of entries will null/None values?
+data.MESSAGE.isnull().any().sum()
+
+# Locate empty emails
+type(data.MESSAGE.str.len())
+
+data[data.MESSAGE.str.len() == 0].index
+
+# To get or locate the row number where the cmds lives (It's a type of searching features)
+data.index.get_loc('cmds')
