@@ -11,6 +11,14 @@ import matplotlib.pyplot as plt
 from os import walk
 from os.path import join
 
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.stem import SnowballStemmer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+from bs4 import BeautifulSoup
+
 # %matplotlib inline # This is anctually for Jupitar notbook specific for chart export
 
 # List of Constants, whihc will not be changes
@@ -189,10 +197,12 @@ plt.pie(slizeOfPie, labels = categoryName, textprops={'fontsize':6},
 plt.show()
 
 
-
-
-
-
+# Apply cleaning and tokenisation to all email messages
+# Slicing Dataframes and Series & Creating Subsets
+data.iat[2, 0] # This will shows the specific information from the specific location of dataframe
+data.iloc[0 : 4] # This will show the result from multipel rows of dataframe
+data.iloc[4 : 8]
+firstEmails = data.MESSAGE.iloc[3 : 7]
 
 
 
